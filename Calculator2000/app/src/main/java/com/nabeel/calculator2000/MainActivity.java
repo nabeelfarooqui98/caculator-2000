@@ -134,8 +134,10 @@ public class MainActivity extends AppCompatActivity {
             //overrided i dont know from where!!!
             public void onClick(View v) {
 
-
-                input.setText(input.getText().length() - 1);
+                //input.setText(input.getText().length() - 1);
+                input.setText(null);
+                result.setText(null);
+                val1 = Double.NaN;
             }
 
         });
@@ -146,7 +148,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 computeCalculation();
                 CURRENT_ACTION = ADDITION;
-                result.setText(val1 + "+");
+                result.setText(val1 + " +");
                 input.setText(null);
             }
         });
@@ -156,7 +158,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 computeCalculation();
                 CURRENT_ACTION = SUBTRACTION;
-                result.setText(val1 + "-");
+                result.setText(val1 + " -");
                 input.setText(null);
             }
         });
@@ -166,7 +168,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 computeCalculation();
                 CURRENT_ACTION = MULTIPLICATION;
-                result.setText(val1 + "*");
+                result.setText(val1 + " *");
                 input.setText(null);
             }
         });
@@ -176,7 +178,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 computeCalculation();
                 CURRENT_ACTION = DIVISION;
-                result.setText(val1 + "/");
+                result.setText(val1 + " /");
                 input.setText(null);
             }
         });
@@ -186,8 +188,15 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 computeCalculation();
                 //binding.infoTextView.setText(binding.infoTextView.getText().toString() + val2 + " = " + val1);
-                String s = Double.toString(val1);
-                result.setText(s);
+                if(Double.isNaN(val1))
+                {
+                    result.setText(null);
+                }
+                else
+                {
+                    String s = Double.toString(val1);
+                    result.setText(s);
+                }
                 input.setText(null);
                 val1 = Double.NaN;
                 CURRENT_ACTION = '0';
